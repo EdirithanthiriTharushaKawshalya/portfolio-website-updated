@@ -31,7 +31,7 @@ export default function ContactForm() {
       {showSuccess && (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
           <p className="font-bold">Message sent!</p>
-          <p className="text-sm">Thanks for reaching out. I'll get back to you soon.</p>
+          <p className="text-sm">Thanks for reaching out. I&apos;ll get back to you soon.</p>
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">

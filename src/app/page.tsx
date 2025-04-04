@@ -40,7 +40,7 @@ export default function Home() {
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 space-y-8">
           <div className="flex flex-col items-center text-center space-y-8 pt-50 pb-50">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
-              Hi, I'm <span className="text-primary">Tharusha Kawshalya</span>
+              Hi, I&apos;m <span className="text-primary">Tharusha Kawshalya</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-[700px]">
               A passionate full-stack developer specializing in building exceptional digital experiences
