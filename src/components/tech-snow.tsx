@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
-import { motion, useAnimationControls } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 
 // Tech symbols to display as falling elements
 const techSymbols = [
@@ -48,6 +48,93 @@ const techColors = [
   "#64748b", // Slate
 ]
 
+// Client-side only component for the actual snow animation
+export default function TechSnow() {
+  // Use state to track if we're in the browser
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Only run on the client after mount
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // Return null during SSR and initial render
+  if (!isMounted) {
+    return null
+  }
+
+  // Only render the actual snow component on the client
+  return <ClientTechSnow />
+}
+
+// Separate component that only runs on the client
+function ClientTechSnow() {
+  const [elements, setElements] = useState<
+    Array<{
+      id: number
+      x: number
+      symbol: string
+      color: string
+      size: number
+      speed: number
+      delay: number
+    }>
+  >([])
+
+  useEffect(() => {
+    // Generate elements
+    const width = window.innerWidth
+    const height = window.innerHeight
+
+    const newElements = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * width,
+      symbol: techSymbols[Math.floor(Math.random() * techSymbols.length)],
+      color: techColors[Math.floor(Math.random() * techColors.length)],
+      size: Math.random() * 12 + 8,
+      speed: Math.random() * 15 + 10,
+      delay: Math.random() * 10,
+    }))
+
+    setElements(newElements)
+
+    // Handle window resize
+    const handleResize = () => {
+      const newWidth = window.innerWidth
+      setElements((prev) =>
+        prev.map((element) => ({
+          ...element,
+          x: (element.x / width) * newWidth,
+        })),
+      )
+    }
+
+    // Throttle resize events
+    let resizeTimer: NodeJS.Timeout
+    const throttledResize = () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(handleResize, 200)
+    }
+
+    window.addEventListener("resize", throttledResize)
+    return () => {
+      window.removeEventListener("resize", throttledResize)
+      clearTimeout(resizeTimer)
+    }
+  }, [])
+
+  return (
+    <div className="fixed inset-0 w-full h-full z-0 select-none" style={{ pointerEvents: "none" }}>
+      <svg className="w-full h-full">
+        <title>Tech Snow</title>
+        {elements.map((element) => (
+          <FallingElement key={element.id} {...element} />
+        ))}
+      </svg>
+    </div>
+  )
+}
+
 function FallingElement({
   x,
   symbol,
@@ -63,37 +150,22 @@ function FallingElement({
   speed: number
   delay: number
 }) {
-  const controls = useAnimationControls()
-  const windowHeight = typeof window !== "undefined" ? window.innerHeight : 1000
-
-  useEffect(() => {
-    controls.start({
-      y: [
-        -size * 2, // Start above the viewport
-        windowHeight + size * 2, // End below the viewport
-      ],
-      x: [
-        x,
-        x + (Math.random() > 0.5 ? 1 : -1) * Math.random() * 100, // Slight horizontal drift
-      ],
-      opacity: [
-        0, // Start transparent
-        0.8, // Become visible
-        0.8, // Stay visible
-        0, // Fade out at the bottom
-      ],
-      transition: {
+  return (
+    <motion.g
+      initial={{ y: -size * 2, x, opacity: 0 }}
+      animate={{
+        y: window.innerHeight + size * 2,
+        x: x + (Math.random() > 0.5 ? 1 : -1) * Math.random() * 100,
+        opacity: [0, 0.8, 0.8, 0],
+      }}
+      transition={{
         duration: speed,
         times: [0, 0.1, 0.9, 1],
         repeat: Number.POSITIVE_INFINITY,
-        delay: delay,
+        delay,
         ease: "linear",
-      },
-    })
-  }, [controls, x, size, windowHeight, speed, delay])
-
-  return (
-    <motion.g animate={controls}>
+      }}
+    >
       <circle
         cx={0}
         cy={0}
@@ -115,59 +187,6 @@ function FallingElement({
         {symbol}
       </text>
     </motion.g>
-  )
-}
-
-export default function TechSnow() {
-  const [elements, setElements] = useState<
-    Array<{
-      id: number
-      x: number
-      symbol: string
-      color: string
-      size: number
-      speed: number
-      delay: number
-    }>
-  >([])
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const generateElements = () => {
-    const width = typeof window !== "undefined" ? window.innerWidth : 1000
-
-    const newElements = Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * width,
-      symbol: techSymbols[Math.floor(Math.random() * techSymbols.length)],
-      color: techColors[Math.floor(Math.random() * techColors.length)],
-      size: Math.random() * 12 + 8,
-      speed: Math.random() * 15 + 10, // Random speed between 10-25 seconds
-      delay: Math.random() * 10, // Random delay for a more natural effect
-    }))
-
-    setElements(newElements)
-  }
-
-  useEffect(() => {
-    generateElements()
-
-    const handleResize = () => {
-      generateElements()
-    }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  return (
-    <div ref={containerRef} className="fixed inset-0 w-full h-full pointer-events-none z-0">
-      <svg className="w-full h-full">
-        <title>Tech Snow</title>
-        {elements.map((element) => (
-          <FallingElement key={element.id} {...element} />
-        ))}
-      </svg>
-    </div>
   )
 }
 

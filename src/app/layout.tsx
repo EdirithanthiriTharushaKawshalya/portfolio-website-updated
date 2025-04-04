@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Add the falling tech snow background */}
+        {/* The TechSnow component will only render on the client */}
         <TechSnow />
         
         {/* The children will be rendered above the background */}
