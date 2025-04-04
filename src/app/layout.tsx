@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from 'next/font/google';
 import "./globals.css";
-import FloatingBubbles from "@/components/floating-bubbles";
+import TechSnow from "@/components/tech-snow";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,10 +28,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Add the FloatingBubbles as a fixed background */}
-        <FloatingBubbles />
+        {/* Add the falling tech snow background */}
+        <TechSnow />
         
-        {/* The children will be rendered above the bubbles */}
+        {/* The children will be rendered above the background */}
         <div className="relative z-10">
           {children}
         </div>
