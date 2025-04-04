@@ -63,21 +63,27 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-center">About Me</h2>
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="aspect-square rounded-xl overflow-hidden">
-                <img src="/aboutme/My_Pic.png" alt="Profile" className="w-140 h-140 object-cover" />
+              <div className="aspect-square rounded-xl overflow-hidden w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+                <img
+                  src="/aboutme/My_Pic.png"
+                  alt="Profile"
+                  className="w-full h-auto object-cover"
+                />
               </div>
-              <div className="space-y-4">
+
+
+              <div className="space-y-4 text-center">
                 <p className="text-lg">
-                I am Edirithanthiri Tharusha Kawshalya, a passionate and dedicated Computer Science student at the University of Westminster (IIT). 
-                With a strong focus on full-stack development, I enjoy building dynamic and user-friendly web applications that solve real-world problems. 
-                My experience spans frontend and backend development, where I continuously refine my skills in creating efficient, scalable, and innovative digital solutions.
+                  I am Edirithanthiri Tharusha Kawshalya, a passionate and dedicated Computer Science student at the University of Westminster (IIT).
+                  With a strong focus on full-stack development, I enjoy building dynamic and user-friendly web applications that solve real-world problems.
+                  My experience spans frontend and backend development, where I continuously refine my skills in creating efficient, scalable, and innovative digital solutions.
                 </p>
                 <p className="text-lg">
-                Beyond coding, I have a deep interest in photography, capturing moments that tell compelling stories. 
-                My creative background in visual storytelling complements my technical expertise, allowing me to bring a unique perspective to software development. 
-                As I prepare for my internship, I am eager to expand my practical knowledge, collaborate on exciting projects, and contribute to innovative solutions in the tech industry.
+                  Beyond coding, I have a deep interest in photography, capturing moments that tell compelling stories.
+                  My creative background in visual storytelling complements my technical expertise, allowing me to bring a unique perspective to software development.
+                  As I prepare for my internship, I am eager to expand my practical knowledge, collaborate on exciting projects, and contribute to innovative solutions in the tech industry.
                 </p>
-                <div className="flex gap-4 pt-4">
+                <div className="flex justify-center gap-4 pt-4">
                   <Button variant="outline" size="icon" asChild>
                     <Link href="https://github.com/EdirithanthiriTharushaKawshalya" target="_blank" rel="noopener noreferrer">
                       <Github className="h-5 w-5" />
