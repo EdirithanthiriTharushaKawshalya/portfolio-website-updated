@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from 'next/font/google';
 import "./globals.css";
+import FloatingBubbles from "@/components/floating-bubbles";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Add the FloatingBubbles as a fixed background */}
+        <FloatingBubbles />
+        
+        {/* The children will be rendered above the bubbles */}
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
