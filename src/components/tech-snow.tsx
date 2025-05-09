@@ -84,7 +84,6 @@ function ClientTechSnow() {
   useEffect(() => {
     // Generate elements
     const width = window.innerWidth
-    const height = window.innerHeight
 
     const newElements = Array.from({ length: 50 }, (_, i) => ({
       id: i,
