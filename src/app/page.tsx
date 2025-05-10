@@ -43,7 +43,7 @@ export default function Home() {
               Hi, I&apos;m <span className="text-primary">Tharusha Kawshalya</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-[700px]">
-              A passionate full-stack developer specializing in building exceptional digital experiences
+              A passionate UI/UX designer and frontend developer dedicated to crafting intuitive and engaging digital experiences.
             </p>
             <div className="flex gap-4">
               <Button asChild>
@@ -75,13 +75,13 @@ export default function Home() {
               <div className="space-y-4 text-center">
                 <p className="text-lg">
                   I am Edirithanthiri Tharusha Kawshalya, a passionate and dedicated Computer Science student at the University of Westminster (IIT).
-                  With a strong focus on full-stack development, I enjoy building dynamic and user-friendly web applications that solve real-world problems.
-                  My experience spans frontend and backend development, where I continuously refine my skills in creating efficient, scalable, and innovative digital solutions.
+                  With a strong focus on UI/UX design and frontend development, I enjoy creating visually appealing, user-centered web interfaces that deliver seamless and engaging user experiences.
+                  I continuously refine my skills in responsive design, usability, and modern web technologies—enhanced by my background in graphic design—to craft intuitive and innovative digital solutions.
                 </p>
                 <p className="text-lg">
                   Beyond coding, I have a deep interest in photography, capturing moments that tell compelling stories.
-                  My creative background in visual storytelling complements my technical expertise, allowing me to bring a unique perspective to software development.
-                  As I prepare for my internship, I am eager to expand my practical knowledge, collaborate on exciting projects, and contribute to innovative solutions in the tech industry.
+                  My creative background in visual storytelling and graphic design enhances my approach to UI/UX design, allowing me to blend aesthetics with functionality in every project.
+                  As I prepare for my internship, I am eager to grow my expertise in design and development, collaborate on impactful projects, and contribute to user-focused innovation in the tech industry.
                 </p>
                 <div className="flex justify-center gap-4 pt-4">
                   <Button variant="outline" size="icon" asChild>
@@ -119,6 +119,14 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <ProjectCard
+                title="DressMe - AI-Powered Personalized Fashion Designer"
+                description="A smart, AI-powered fashion app built with Flutter and Node.js. Users can customize outfits, 
+                get skin tone-based suggestions, find similar styles from photos, and locate nearby tailors—all in a personalized, intuitive interface."
+                image="/featuredprojects/DressMe.png?height=400&width=600"
+                tags={["Flutter (frontend)", "Node.js", "Express.js", "MongoDB"]}
+                link="https://www.linkedin.com/posts/dresssmee_dressme-applaunch-fashiondesign-activity-7316305418127884288-Kn3W?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFivWecB4tRbf99e_8ZoPTNj-v9PjZTT1kU"
+              />
+              <ProjectCard
                 title="Real Estate Website - Estate Agent SPA"
                 description="A sleek Single Page Application (SPA) for seamless property browsing. Users can filter listings, 
                 view details, and manage favorites effortlessly for a smooth real estate experience."
@@ -134,19 +142,12 @@ export default function Home() {
                 tags={["HTML", "CSS", "JavaScript"]}
                 link="https://github.com/EdirithanthiriTharushaKawshalya/blog-page"
               />
-              <ProjectCard
-                title="Photography Studio Page"
-                description="A modern, responsive Next.js website showcasing stunning photography projects. 
-                Users can explore portfolios, view past work, and easily get in touch through a sleek and engaging interface."
-                image="/featuredprojects/Photography Website.png?height=400&width=600"
-                tags={["Next.js"]}
-                link="#"
-              />
+              
             </div>
             <div className="text-center pt-8">
               <Button variant="outline" asChild>
-                <Link href="https://github.com/EdirithanthiriTharushaKawshalya" target="_blank" rel="noopener noreferrer">
-                  View more on GitHub <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href="https://www.linkedin.com/in/tharusha-kawshalya-747359356/details/projects/" target="_blank" rel="noopener noreferrer">
+                  View more on Linkedin <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -163,8 +164,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <SkillBadge name="HTML" />
-              <SkillBadge name="CSS" />
+              <SkillBadge name="HTML & CSS" />
               <SkillBadge name="JavaScript" />
               <SkillBadge name="Next.js" />
               <SkillBadge name="Java" />
@@ -175,6 +175,11 @@ export default function Home() {
               <SkillBadge name="Figma" />
               <SkillBadge name="Git" />
               <SkillBadge name="Adobe Photoshop" />
+              <SkillBadge name="Adobe Lightroom" />
+              <SkillBadge name="Adobe Illustrator" />
+              <SkillBadge name="Adobe Premiere Pro" />
+              <SkillBadge name="Wordpress" />
+              <SkillBadge name="AWS" />
             </div>
           </div>
         </section>
