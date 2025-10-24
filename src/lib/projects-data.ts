@@ -31,6 +31,22 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
+    id: "prime_evoke",
+    title: "Prime Evoke Digital Platform — Multi-Brand Creative Studio Ecosystem",
+    description:
+      "A unified digital platform built to represent a creative agency and its sub-brands, featuring dynamic portfolios, booking systems, and an internal staff management dashboard.",
+
+    longDescription:
+      "The Prime Evoke Digital Platform is a fully developed web ecosystem created for Prime Evoke Private Limited, bringing together multiple creative brands under one cohesive digital identity. The platform includes two full studio websites—Evoke Gallery and Studio Zine—each with dynamic portfolio galleries, service/package displays, testimonials, and an automated client booking inquiry system. A dedicated landing page for Evoke Waves introduces the company's media and music production branch. Additionally, the system includes a secure, password-protected admin dashboard accessible only to management and authorized staff. From this dashboard, management can monitor and update inquiries, assign staff to client projects, manage project workflows, delete or update bookings, and control the studio’s operational pipeline. Built using Next.js and Supabase, this project demonstrates full-stack development, structured system design, and real-world business workflow implementation.",
+    image: "/featuredprojects/primeevoke.png",
+    tags: ["Next JS", "Tailwind CSS", "Superbase", "Full-Stack Development", "Business Operations", "UI/UX Design"],
+    githubLink: "https://github.com/EdirithanthiriTharushaKawshalya/prime-evoke-pvt",
+    liveLink: "https://prime-evoke-pvt.vercel.app/",
+    featured: false,
+    category: "Web Development",
+    year: "2025",
+  },
+  {
     id: "mindnest",
     title: "MindNest",
     description:
